@@ -1,0 +1,32 @@
+services:
+  homer:
+    image: b4bz/homer
+    container_name: homer
+    volumes:
+      - /etc/pknw1/config/docker-gen/config2.yml:/www/assets/config.yml # Make sure your local config directory exists
+      - /etc/pknw1/config/docker-gen/page2.yml:/www/assets/page2.yml # Make sure your local config directory exists
+    user: 666:1000 # default
+    networks:
+      - admin
+    environment:
+      - INIT_ASSETS=1 # default, requires the config directory to be writable for the container user (see user option)
+      - APP_GROUP=Content
+      - APP_LOGO=https://raw.githubusercontent.com/bastienwirtz/homer/main/public/logo.png
+      - VIRTUAL_HOST=admin.pknw1.co.uk
+      - VIRTUAL_PORT=8080
+    restart: always
+  dockergen_homer:
+    image: nginxproxy/docker-gen
+    command: -config /config/docker_gen.cfg
+    container_name: dockergen_homer
+    hostname: dockergen_homer
+    volumes:
+      - /etc/pknw1/config/docker-gen:/config
+      - /var/run/docker.sock:/tmp/docker.sock
+      - /var/run/docker.socker:/var/run/docker.sock
+    networks:
+      - admin
+networks:
+  admin:
+    external: true
+
