@@ -1,0 +1,135 @@
+---
+# Homepage configuration
+# See https://fontawesome.com/search for icons options
+# Optional: Use external configuration file.
+# Using this will ignore remaining config in this file
+# externalConfig: https://example.com/server-luci/config.yaml
+title: "Admin Portal"
+subtitle: "pknw1"
+# documentTitle: "Welcome" # Customize the browser tab text
+logo: "https://www.pknw1.co.uk/assets/images/logo-stacked-511x282.png"
+header: true # Set to false to hide the header
+footer: 'pknw1'
+columns: "6" # "auto" or number (must be a factor of 12: 1, 2, 3, 4, 6, 12)
+connectivityCheck: true # whether you want to display a message when the apps are not accessible anymore (VPN disconnected for example).
+defaults:
+  layout: columns # Either 'columns', or 'list'
+  colorTheme: dark 
+theme: default # 'default' or one of the themes available in 'src/assets/themes'.
+# Here is the exhaustive list of customization parameters
+# However all value are optional and will fallback to default if not set.
+# if you want to change only some of the colors, feel free to remove all unused key.
+colors:
+  light:
+    highlight-primary: "#3367d6"
+    highlight-secondary: "#4285f4"
+    highlight-hover: "#5a95f5"
+    background: "#f5f5f5"
+    card-background: "#ffffff"
+    text: "#363636"
+    text-header: "#424242"
+    text-title: "#303030"
+    text-subtitle: "#424242"
+    card-shadow: rgba(0, 0, 0, 0.1)
+    link: "#3273dc"
+    link-hover: "#363636"
+    background-image: "/assets/your/light/bg.png" # prefix with your sub subpath if any (ex: /homer/assets/...)
+  dark:
+    highlight-primary: "#232323"
+    highlight-secondary: "#e5a00d"
+    highlight-hover: "#232323"
+    background: "#131313"
+    card-background: "#2b2b2b"
+    text: "#e5a00d"
+    text-header: "#ffffff"
+    text-title: "#fafafa"
+    text-subtitle: "#e5a00d"
+    card-shadow: rgba(0, 0, 0, 0.4)
+    link: "#3273dc"
+    link-hover: "#ffdd57"
+    background-image: "/assets/your/dark/bg.png" # prefix with your sub subpath if any (ex: /homer/assets/...)
+# Optional message
+message:
+  # url: "https://<my-api-endpoint>" # Can fetch information from an endpoint to override value below.
+  # mapping: # allows to map fields from the remote format to the one expected by Homer
+  #   title: 'id' # use value from field 'id' as title
+  #   content: 'value' # value from field 'value' as content
+  # refreshInterval: 10000 # Optional: time interval to refresh message
+  #
+  # Real example using chucknorris.io for showing Chuck Norris facts as messages:
+  # url: https://api.chucknorris.io/jokes/random
+  # mapping:
+  #   title: 'id'
+  #   content: 'value'
+  # refreshInterval: 10000
+  style: "is-error"
+  title: "Apps available to users"
+  icon: "fa fa-exclamation-triangle"
+  # The content also accepts HTML content, so you can add divs, images or whatever you want to make match your needs.
+  content: "The following apps and services are currently running and available to access"
+# Optional navbar
+# links: [] # Allows for navbar (dark mode, layout, and search) without any links
+links:
+  - name: "Admin Console"
+    icon: "fa-solid fa-sliders"
+    url: "https://admin.pknw1.co.uk"
+  - name: pknw1.co.uk
+    icon: "fab fa-github"
+    url: "https://www.pknw1.co.uk"
+    target: "_blank" # optional html tag target attribute
+  - name: "GitHub"
+    icon: "fab fa-github"
+    url: "https://github.com/pknw1"
+    target: "_blank" # optional html tag target attribute
+  - name: "DockerHub"
+    icon: "fa-brands fa-docker"
+    url: "https://hub.docker.com/u/pknw1"
+
+  # this will link to a second homer page that will load config from page2.yml and keep default config values as in config.yml file
+  # see url field and assets/page.yml used in this example:
+  #- name: "Second Page"
+  #  icon: "fas fa-file-alt"
+  #    url: "#page2"
+services:
+  - name: Core Services
+    icon: "fas fa-code-branch"
+    items:
+      - name: "Plex"
+        subtitle: "Watch Movies & TV Shows"
+        logo: "https://cdn.freebiesupply.com/logos/large/2x/plex-logo-png-transparent.png"
+        url: "https://app.plex.tv/desktop"
+        target: "_blank"
+ 
+        
+  - name: User Networks
+    icon: "fas fa-code-branch"
+    items:
+      - name: "metube"
+        #subtitle: "Launch WebApp in a new tab"
+        logo: "https://seekvectors.com/files/download/MeTube-01.png"
+        #tag: "Downloaders"
+        url: "https://metube.secure.pknw1.co.uk"
+        target: "_blank"  
+
+  - name: Notflix
+    icon: "fas fa-code-branch"
+    items:
+      - name: "uptime"
+        #subtitle: "Launch WebApp in a new tab"
+        logo: "https://strawberrysec.net/assets/images/HomeLab/Uptime_Kuma_Header.png"
+        #tag: "Monitoring"
+        url: "https://uptime.admin.pknw1.co.uk"
+        target: "_blank"  
+
+  - name: Misc
+    icon: "fas fa-code-branch"
+    items:
+      - name: "uptime"
+        #subtitle: "Launch WebApp in a new tab"
+        logo: "https://strawberrysec.net/assets/images/HomeLab/Uptime_Kuma_Header.png"
+        #tag: "Monitoring"
+        url: "https://uptime.admin.pknw1.co.uk"
+        target: "_blank"
+
+
+

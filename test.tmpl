@@ -1,0 +1,41 @@
+{{ range $network, $containers := groupByMulti $ "Env.APP_NETWORK" "," }}
+ {{ range $index, $container := $containers }}
+
+  - title: docker start {{ $container.Name }}
+    icon: <iconify-icon icon="tabler:play"></iconify-icon>
+    shell: docker start {{ $container.Name }}
+
+  - title: docker stop {{ $container.Name }}
+    icon:  <iconify-icon icon="mingcute:stop-line"></iconify-icon>
+    shell: docker stop {{ $container.Name }}
+
+  - title: docker logs {{ $container.Name }}
+    icon:  <iconify-icon icon="mingcute:stop-line"></iconify-icon>
+    shell: docker logs --tail 100 -f {{ $container.Name }}
+
+
+    {{ end }}
+{{ end }}
+
+
+{{ range $network, $containers := groupByMulti $ "Env.APP_NETWORK" "," }}
+  - title: {{ $network }}
+    icon: <iconify-icon icon="vscode-icons:folder-type-public-opened"></iconify-icon>
+    contents:
+    {{ range $index, $container := $containers }}
+        {{ if eq $container.Env.APP_NETWORK $network }}
+	  {{ $virtualHostList := split $container.Env.VIRTUAL_HOST "," }}
+	  {{ $firstVirtualHost := index $virtualHostList 0 }}
+         - type: display
+           title: |
+              <span class = "icon">&#128279;</span> <br /><a href="https://{{ $firstVirtualHost }}" target="_blank">{{ $container.Name }}</a>
+            {{ if eq $network "admin" }}
+           contents:
+             - title: 'docker start {{ $container.Name }}'
+             - title: 'docker stop {{ $container.Name }}'
+             - title: 'docker logs {{ $container.Name }}'
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+

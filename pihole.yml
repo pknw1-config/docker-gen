@@ -1,0 +1,27 @@
+  - name: Content
+    items:
+# homer
+    	icon: homer
+        #subtitle: "Launch WebApp in a new tab"
+        logo: "https://raw.githubusercontent.com/bastienwirtz/homer/main/public/logo.png"
+        #tag: "Content"
+        url: "https://homer.admin.pknw1.co.uk"
+        target: "_blank"  
+  - name: Core
+    items:
+# proxymanager
+    	icon: proxymanager
+        #subtitle: "Launch WebApp in a new tab"
+        logo: "https://nginxproxymanager.com/icon.png"
+        #tag: "Core"
+        url: "https://proxymanager.admin.pknw1.co.uk"
+        target: "_blank"  
+  - name: Utilities
+    items:
+# pihole
+    	icon: pihole
+        #subtitle: "Launch WebApp in a new tab"
+        logo: "https://www.mycyberuniverse.com/images/articles/Arthur/how-update-pi-hole/pi-hole-logo.png"
+        #tag: "Utilities"
+        url: "https://pihole.admin.pknw1.co.uk"
+        target: "_blank"  

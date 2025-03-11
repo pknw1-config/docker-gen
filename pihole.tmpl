@@ -1,0 +1,21 @@
+{{ range $group, $containers := groupByMulti $ "Env.APP_GROUP" "," }}
+{{ $name_dots := replace $group "." "_" -1 }}
+{{ $name := replace $name_dots "*" "www" -1 }}
+{{ $group_clean := replace $group "*" "www" -1 }}
+  - name: {{ $group_clean }}
+    items:
+    {{ range $index, $container := $containers }}
+{{ $addrLen := len $container.Addresses }}
+{{ if gt $addrLen 0 }}
+{{ with $address := index $container.Addresses 0 }}
+# {{ $container.Name }}
+{{ $address.IP }}
+{{ end }}
+{{end}}
+	{{ $virtualHostList := split $container.Env.VIRTUAL_HOST "," }}
+	{{ $firstVirtualHost := index $virtualHostList 0 }}
+        url: "https://{{ $firstVirtualHost }}"
+    {{ end }}
+
+{{ end }}
+
